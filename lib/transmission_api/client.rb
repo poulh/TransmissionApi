@@ -55,6 +55,34 @@ class TransmissionApi::Client
     response["arguments"]["torrents"].first
   end
 
+  def resume(id)
+    log "resume_torrent: #{id}"
+
+    response =
+      post(
+        :method => "torrent-start",
+        :arguments => {
+          :ids => id
+        }
+      )
+
+    response["arguments"]["torrent-added"]
+  end
+
+  def pause(id)
+    log "pause_torrent: #{id}"
+
+    response =
+      post(
+        :method => "torrent-stop",
+        :arguments => {
+          :ids => id
+        }
+      )
+
+    response["arguments"]["torrent-added"]
+  end
+
   def create(filename)
     log "add_torrent: #{filename}"
 
