@@ -93,6 +93,21 @@ class TransmissionApi::Client
     response["arguments"]["torrent-added"]
   end
 
+  def remove(id)
+    log "remove_torrent: #{id}"
+
+    response =
+      post(
+        :method => "torrent-remove",
+        :arguments => {
+          :ids => [id],
+          :"delete-local-data" => false
+        }
+      )
+
+    response
+  end
+
   def destroy(id)
     log "remove_torrent: #{id}"
 
