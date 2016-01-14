@@ -65,8 +65,6 @@ class TransmissionApi::Client
           :ids => id
         }
       )
-
-    response["arguments"]["torrent-added"]
   end
 
   def pause(id)
@@ -79,8 +77,6 @@ class TransmissionApi::Client
           :ids => id
         }
       )
-
-    response["arguments"]["torrent-added"]
   end
 
   def create(filename)
