@@ -62,7 +62,7 @@ class TransmissionApi::Client
       post(
         :method => "torrent-start",
         :arguments => {
-          :ids => id
+          :ids => [id]
         }
       )
   end
@@ -74,7 +74,7 @@ class TransmissionApi::Client
       post(
         :method => "torrent-stop",
         :arguments => {
-          :ids => id
+          :ids => [id]
         }
       )
   end
