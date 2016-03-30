@@ -67,6 +67,15 @@ class TransmissionApi::Client
       )
   end
 
+  def resume_all()
+    log "resume_all_torrents"
+
+    response =
+      post(
+        :method => "torrent-start",
+      )
+  end
+
   def pause(id)
     log "pause_torrent: #{id}"
 
@@ -76,6 +85,15 @@ class TransmissionApi::Client
         :arguments => {
           :ids => [id]
         }
+      )
+  end
+
+  def pause_all()
+    log "pause_all_torrents"
+
+    response =
+      post(
+        :method => "torrent-stop",
       )
   end
 
