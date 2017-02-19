@@ -14,11 +14,30 @@ class TransmissionApi::Client
     "rateDownload",
     "rateUpload",
     "percentDone",
-    "files"
+    "files",
+    "comment",
+    "description",
+    "downloadDir",
+    "doneDate",
+    "eta",
+    "hashString",
+    "leechers",
+    "leftUntilDone",
+    "name",
+    "rateDownload",
+    "seeders",
+    "seedRatioLimit",
+    "sizeWhenDone",
+    "status",
+    "torrentFile",
+    "trackers",
+    "uploadLimit",
+    "uploadLimited",
+    "uploadRatio"
   ]
 
   def initialize(opts)
-    @url = opts[:url]
+    @url = opts[:url] || "http://#{opts[:host]}:#{opts[:port]}/transmission/rpc"
     @fields = opts[:fields] || TORRENT_FIELDS
     @basic_auth = { :username => opts[:username], :password => opts[:password] } if opts[:username]
     @session_id = "NOT-INITIALIZED"
@@ -68,6 +87,23 @@ class TransmissionApi::Client
     response["arguments"]["torrent-added"]
   end
 
+  #remove the torrent but **keep** the file
+  def remove(id)
+    log "remove_torrent: #{id}"
+
+    response =
+      post(
+        :method => "torrent-remove",
+        :arguments => {
+          :ids => [id],
+          :"delete-local-data" => false
+        }
+      )
+
+    response
+  end
+
+  #remove the torrent and **delete** the file
   def destroy(id)
     log "remove_torrent: #{id}"
 
