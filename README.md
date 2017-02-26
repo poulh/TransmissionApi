@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/p3-transmission.svg)](http://badge.fury.io/rb/p3-transmission)
+
 # p3-transmission
 
 Control Transmission with this API.
