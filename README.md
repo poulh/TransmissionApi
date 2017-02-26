@@ -10,17 +10,19 @@ Control Transmission with this API.
 
 ## Usage
 
-    transmission =
-      P3::Transmission::Client.new(
-        :username => "username",
-        :password => "password",
-        :url      => "http://127.0.0.1:9091/transmission/rpc"
-      )
+``` ruby
+transmission =
+  P3::Transmission::Client.new(
+    :username => "username",
+    :password => "password",
+    :url      => "http://127.0.0.1:9091/transmission/rpc"
+  )
 
-    torrents = transmission.all
-    torrent = transmission.find(id)
-    torrent = transmission.create("http://torrent.com/nice_pic.torrent")
-    transmission.remove(id)
+torrents = transmission.all
+torrent = transmission.find(id)
+torrent = transmission.create("http://torrent.com/nice_pic.torrent")
+transmission.remove(id)
+```
 
 ## Transmission Api Doc
 
