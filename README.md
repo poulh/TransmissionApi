@@ -15,7 +15,8 @@ transmission =
   P3::Transmission::Client.new(
     :username => "username",
     :password => "password",
-    :url      => "http://127.0.0.1:9091/transmission/rpc"
+    :host     => "127.0.0.1",
+    :port     => 9091
   )
 
 torrents = transmission.all
